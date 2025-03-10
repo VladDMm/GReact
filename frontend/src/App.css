@@ -44,13 +44,14 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  background-color: wheat;
+  background-color: white;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 /* Butonul de scroll */
 #scrollTopBtn {
   position: fixed;
@@ -70,13 +71,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0; /* ascunde butonul */
-  pointer-events: none; /* dezactivează interacțiunea cu butonul */
+  opacity: 0;
+  /* ascunde butonul */
+  pointer-events: none;
+  /* dezactivează interacțiunea cu butonul */
 }
 
 #scrollTopBtn.show {
-  opacity: 1; /* face butonul vizibil */
-  pointer-events: auto; /* permite interacțiunea cu butonul */
+  opacity: 1;
+  /* face butonul vizibil */
+  pointer-events: auto;
+  /* permite interacțiunea cu butonul */
 }
 
 #scrollTopBtn:hover {
@@ -149,6 +154,171 @@ li:hover {
   display: block;
 }
 
+/* Stilizare pentru Popup */
+
+/* .popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 800px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-width: 90%;
+  max-height: 80%;
+  overflow-y: auto; /* Permite scroll dacă textul este prea mare 
+  display: none;
+}
+ .popup.show {
+  display: block;
+} */
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  max-width: 90%;
+  max-height: 80%;
+  overflow-y: auto;
+  /* Permite scroll dacă textul este prea mare */
+  display: none;
+  opacity: 0;
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Stil pentru fundalul opac */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+
+}
+
+/* Când popup-ul este vizibil */
+.popup.show {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
+  /* Îmbunătățește efectul vizual */
+}
+
+/* Când fundalul este activat */
+.popup-overlay.show {
+  display: block;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#popupTitle {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  word-wrap: break-word;
+  /* Asigură că textul lung se va împărți pe linii noi */
+}
+
+.popup p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 5px 0;
+  word-wrap: break-word;
+  /* În cazul în care există cuvinte prea lungi */
+}
+
+
+.popup h2 {
+  margin-bottom: 10px;
+}
+
+.popup button {
+  display: block;
+  margin: 10px auto 0;
+  background: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background: darkred;
+}
+
+/* Când popup-ul este activat */
+.popup.show {
+  display: block;
+}
+
+.popup {
+  display: none;
+  /* Alte stiluri pentru popup */
+}
+
+/* Stilizare tabel */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Ascundem coloanele extra pe telefon */
+@media (max-width: 600px) {
+
+  th:not(:first-child),
+  td:not(:first-child) {
+    display: none;
+  }
+
+  /* Adăugăm un efect pentru a arăta că rândurile sunt clicabile */
+  tbody tr {
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  tbody tr:hover {
+    background: #f1f1f1;
+  }
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   input {
@@ -169,6 +339,3 @@ li:hover {
     color: black !important;
   }
 }
-
-
-

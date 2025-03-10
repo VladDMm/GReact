@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: '0.0.0.0', // Permite conexiuni externe
-    port: 5173, // Folosește portul corect
+    host: '0.0.0.0', // Permite accesul din rețea locală
+    port: 5173,
   },
 })
