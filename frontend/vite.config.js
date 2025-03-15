@@ -8,4 +8,11 @@ export default defineConfig({
     host: '0.0.0.0', // Permite accesul din rețea locală
     port: 5173,
   },
+  proxy: {
+    '/api': {
+      target: 'http://backend:5000', // Numele serviciului din docker-compose
+      changeOrigin: true,
+      secure: false
+    }
+  }
 })

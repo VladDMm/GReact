@@ -6,7 +6,7 @@ const helmet = require('helmet');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 
 // Middleware-uri
 app.use(helmet()); // Adaugă securitate HTTP headers
@@ -20,16 +20,6 @@ app.use((req, res, next) => {
 });
 
 // const db = mysql.createPool({
-//   host: process.env.DB_HOST || 'localhost',
-//   user: process.env.DB_USER || 'root',
-//   password: process.env.DB_PASSWORD || 'root',
-//   database: process.env.DB_NAME || 'glasstrack_db', 
-//   waitForConnections: true,
-//   connectionLimit: 10, // Maxim 10 conexiuni simultane
-//   queueLimit: 0
-// });
-
-// const db = mysql.createPool({
 //   host: process.env.DB_HOST || 'sql.freedb.tech',
 //   user: process.env.DB_USER || 'freedb_administratorRoot',
 //   password: process.env.DB_PASSWORD || 'TePDzZFgPsKq*8x',
@@ -41,15 +31,26 @@ app.use((req, res, next) => {
 // });
 
 const db = mysql.createPool({
-  host: process.env.DB_HOST || '95.65.99.175',
+  host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || 'Halley2025!',
+  password: process.env.DB_PASSWORD || 'root',
   database: process.env.DB_NAME || 'glasstrack_db',
   waitForConnections: true,
-  connectionLimit: 10,
+  connectionLimit: 10, // Maxim 10 conexiuni simultane
   queueLimit: 0,
-  charset: 'cp1251'
+  charset: 'cp1251' // 🔥 Asigură codificarea corectă
 });
+
+// const db = mysql.createPool({
+//   host: process.env.DB_HOST || '172.16.4.99',
+//   user: process.env.DB_USER || 'root',
+//   password: process.env.DB_PASSWORD || 'Halley2025!',
+//   database: process.env.DB_NAME || 'glasstrack_db',
+//   waitForConnections: true,
+//   connectionLimit: 10,
+//   queueLimit: 0,
+//   charset: 'cp1251'
+// });
 
 // 🔹 GET - Obține timestamp-ul ultimei actualizări
 app.get('/api/products/last-update', async (req, res) => {
